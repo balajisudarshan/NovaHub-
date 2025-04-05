@@ -6,7 +6,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    phone: '',
+    phoneNumber: '',
     password: '',
     confirmPassword: '',
     role: 'guest'
@@ -45,7 +45,7 @@ const Register = () => {
       <form onSubmit={handleSubmit} className="register-form">
         <input type="text" name="username" placeholder="Username" required onChange={handleChange} />
         <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
-        <input type="text" name="phone" placeholder="Phone Number" required onChange={handleChange} />
+        <input type="text" name="phoneNumber" placeholder="Phone Number" required onChange={handleChange} />
         <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
         <input type="password" name="confirmPassword" placeholder="Confirm Password" required onChange={handleChange} />
         <select name="role" onChange={handleChange} value={formData.role}>
