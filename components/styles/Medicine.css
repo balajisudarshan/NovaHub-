@@ -1,0 +1,96 @@
+.medicine-container {
+  padding: 20px;
+  
+  min-height: 100vh;
+  font-family: "Hind Madurai", sans-serif;
+}
+
+.medicine-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #0D47A1;
+}
+
+.medicine-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.medicine-table thead {
+  background-color: #cffaff;
+  color: white;
+}
+
+.medicine-table th,
+.medicine-table td {
+  padding: 12px;
+  text-align: left;
+  font-size: 15px;
+  border-bottom: 1px solid #ddd;
+  color: #0D47A1;
+}
+
+.medicine-table tr:hover {
+  background-color: #d5e5fa;
+  cursor: pointer;
+}
+
+.add-cart-btn {
+  padding: 8px 12px;
+  background-color: #0D47A1;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-cart-btn:hover {
+  background-color: #506991;
+}
+.add-cart-btn {
+  background-color: #0D47A1;
+  border: none;
+  color: white;
+  padding: 10px;
+  
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.add-cart-btn:hover {
+  background-color: #506991;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .medicine-title {
+    font-size: 1.5rem;
+  }
+
+  .medicine-table th,
+  .medicine-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .add-cart-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .medicine-table {
+    overflow-x: auto;
+    display: block;
+  }
+}

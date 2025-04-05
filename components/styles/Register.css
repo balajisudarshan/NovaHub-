@@ -1,0 +1,51 @@
+.register-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #E3F2FD;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  font-family: "Hind Madurai", sans-serif;
+}
+
+.register-title {
+  text-align: center;
+  color: #0D47A1;
+  margin-bottom: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form input,
+.register-form select {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #b0bec5;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.register-form button {
+  background-color: #506991;
+  color: white;
+  padding: 10px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-form button:hover {
+  background-color: #354763;
+}
+
+@media (max-width: 500px) {
+  .register-container {
+    width: 90%;
+    padding: 20px;
+  }
+}
