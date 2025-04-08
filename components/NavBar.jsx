@@ -24,7 +24,7 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="loginRegisterBtn">
-        <button >Login</button>
+        <button ><Link to="/login">Login</Link></button>
         <button ><Link to="/register">Register</Link></button>
 
       </div>
