@@ -2,38 +2,50 @@
   background-color: #E3F2FD;
   color: #0D47A1;
   font-family: "Hind Madurai", sans-serif;
-  padding: 10px 20px;
+  padding: 12px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
 }
-.logo h1{
-  margin-top: 10%;
-  font-size: 1.5rem;
+
+.logo h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
 }
-a{
+
+a {
   text-decoration: none;
   color: #0D47A1;
 }
-.navbar .hamburger {
+
+.hamburger {
   display: none;
-  font-size: 24px;
+  font-size: 26px;
   cursor: pointer;
 }
 
-.navbar .links ul {
+.links {
   display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.links ul {
+  display: flex;
+  gap: 30px;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar .links ul li {
-  margin-right: 40px;
+.links ul li {
+  font-weight: 600;
   position: relative;
-  font-weight: bold;
 }
 
-.navbar .links ul li::after {
+.links ul li::after {
   content: '';
   position: absolute;
   width: 0%;
@@ -44,63 +56,75 @@ a{
   transition: all 0.3s ease-in-out;
 }
 
-.navbar .links ul li:hover::after {
+.links ul li:hover::after {
   width: 100%;
   left: 0;
 }
 
-.loginRegisterBtn button {
-  background-color: #506991;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
+.auth-buttons {
+  display: flex;
+  gap: 15px;
 }
 
-/* Responsive Styles */
+.btn {
+  background-color: #506991;
+  color: white;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3e5675;
+}
+
+.dashboard {
+  background-color: #4CAF50;
+}
+
+.dashboard:hover {
+  background-color: #3d9241;
+}
+
 @media (max-width: 768px) {
-  .navbar .hamburger {
+  .hamburger {
     display: block;
   }
 
-  .navbar .links {
+  .links {
     position: absolute;
-    top: 60px;
+    top: 65px;
     left: 0;
     width: 100%;
     background-color: #E3F2FD;
-    display: none;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    display: none;
+    padding: 20px 0;
+    z-index: 999;
   }
 
-  .navbar .links.open {
+  .links.open {
     display: flex;
   }
 
-  .navbar .links ul {
+  .links ul {
     flex-direction: column;
-    padding: 0;
-    width: 100%;
+    gap: 20px;
   }
 
-  .navbar .links ul li {
-    margin: 15px 0;
-  }
-  .navbar .links ul li::after {
-    width: 0%;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .navbar .links ul li:hover::after {
-    width: fit-content; 
-    left: 25%; 
+  .auth-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
   }
 
-  .loginRegisterBtn {
-    display: none;
+  .btn {
+    width: 80%;
+    text-align: center;
   }
 }

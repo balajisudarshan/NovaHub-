@@ -1,24 +1,33 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import './styles/login.css'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./styles/login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [message, setMessage] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const res = await axios.post('http://localhost:3000/user/login', {
-        email,
-        password,
-      })
-      setMessage(res.data.message)
-    } catch (err) {
-      setMessage(err.response.data.message)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const expiration = new Date().getTime() + 2 * 60 * 60 * 1000;
+    if (email === "patient@gmail.com" && password === "patient@123") {
+      localStorage.setItem(
+        "userSession",
+        JSON.stringify({ role: "patient", email, expiresAt: expiration })
+      );
+      navigate("/patientDashboard");
+    } else if (email === "doctor@gmail.com" && password === "doctor@123") {
+      localStorage.setItem(
+        "userSession",
+        JSON.stringify({ role: "doctor", email, expiresAt: expiration })
+      );
+      navigate("/doctorDashboard");
+    } else {
+      setMessage("Invalid email or password");
     }
-  }
+  };
 
   return (
     <div className="login-container">
@@ -42,7 +51,7 @@ const Login = () => {
         {message && <p className="message">{message}</p>}
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
