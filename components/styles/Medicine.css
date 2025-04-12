@@ -1,96 +1,73 @@
+/* styles/Medicine.css */
+
 .medicine-container {
   padding: 20px;
-  
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f0f8ff;
   min-height: 100vh;
-  font-family: "Hind Madurai", sans-serif;
 }
 
-.medicine-title {
-  text-align: center;
+.medicine-container h2 {
+  color: #005f99;
   margin-bottom: 20px;
-  font-size: 2rem;
-  color: #0D47A1;
 }
 
 .medicine-table {
   width: 100%;
   border-collapse: collapse;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: white;
-}
-
-.medicine-table thead {
-  background-color: #cffaff;
-  color: white;
+  overflow-x: auto;
 }
 
 .medicine-table th,
 .medicine-table td {
+  border: 1px solid #b3d9ff;
   padding: 12px;
   text-align: left;
-  font-size: 15px;
-  border-bottom: 1px solid #ddd;
-  color: #0D47A1;
 }
 
-.medicine-table tr:hover {
-  background-color: #d5e5fa;
-  cursor: pointer;
+.medicine-table th {
+  background-color: #cce6ff;
+  color: #003d66;
 }
 
-.add-cart-btn {
-  padding: 8px 12px;
-  background-color: #0D47A1;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s ease;
+.medicine-table td {
+  background-color: #e6f2ff;
+  color: #003d66;
 }
 
-.add-cart-btn:hover {
-  background-color: #506991;
-}
-.add-cart-btn {
-  background-color: #0D47A1;
-  border: none;
-  color: white;
-  padding: 10px;
-  
-  cursor: pointer;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s ease;
-}
-
-.add-cart-btn:hover {
-  background-color: #506991;
-}
-
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .medicine-title {
-    font-size: 1.5rem;
-  }
-
   .medicine-table th,
   .medicine-table td {
-    font-size: 14px;
     padding: 10px;
-  }
-
-  .add-cart-btn {
-    padding: 6px 10px;
     font-size: 14px;
   }
 
-  .medicine-table {
-    overflow-x: auto;
+  .medicine-container h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .medicine-table th,
+  .medicine-table td {
     display: block;
+    width: 100%;
+  }
+
+  .medicine-table tr {
+    margin-bottom: 1rem;
+    display: block;
+    border: 1px solid #b3d9ff;
+  }
+
+  .medicine-table thead {
+    display: none;
+  }
+
+  .medicine-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
   }
 }
