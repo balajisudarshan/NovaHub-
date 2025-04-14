@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/DoctorCard.css";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const DoctorCard = () => {
   const [doctors, setDoctors] = useState([]);
@@ -15,15 +16,21 @@ const DoctorCard = () => {
     <div className="doctor-container">
       <h2>Our Doctors</h2>
       <div className="doctor-grid">
-        {doctors.map((doc) => (
-          <div className="doctor-card" key={doc.id}>
-            <img src={doc.avatar} alt={doc.name} className="doctor-avatar" />
-            <h3>{doc.name}</h3>
-            <p><strong>Specialty:</strong> {doc.specialisation}</p>
-            {/* <p><strong>Experience:</strong> {doc.experience}</p>
-            <p><strong>Email:</strong> {doc.email}</p> */}
+        {doctors.length === 0 ? (
+          <div className="loader-container">
+            <BeatLoader color="#36d7b7" size={15} />
           </div>
-        ))}
+        ) : (
+          doctors.map((doc) => (
+            <div className="doctor-card" key={doc.id}>
+              <img src={doc.avatar} alt={doc.name} className="doctor-avatar" />
+              <h3>{doc.name}</h3>
+              <p><strong>Specialty:</strong> {doc.specialisation}</p>
+              {/* <p><strong>Experience:</strong> {doc.experience}</p>
+              <p><strong>Email:</strong> {doc.email}</p> */}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

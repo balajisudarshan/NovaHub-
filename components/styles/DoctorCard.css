@@ -41,3 +41,10 @@
   object-fit: cover;
   margin-bottom: 15px;
 }
+.loader-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
