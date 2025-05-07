@@ -46,7 +46,7 @@ const NavBar = () => {
               {getUserRole() === "doctor" && (
                 <Link to="/doctorDashboard" className="btn dashboard">Dashboard</Link>
               )}
-              {getUserRole() === "patient" && (
+              {getUserRole() === "guest" && (
                 <Link to="/patientDashboard" className="btn dashboard">Dashboard</Link>
               )}
             </>

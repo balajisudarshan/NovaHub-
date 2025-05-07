@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/Login.css";
+import axios from "axios";  // import axios to make HTTP requests
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,24 +9,35 @@ const Login = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const expiration = new Date().getTime() + 2 * 60 * 60 * 1000;
-    if (email === "patient@gmail.com" && password === "patient@123") {
-      localStorage.setItem(
-        "userSession",
-        JSON.stringify({ role: "patient", email, expiresAt: expiration })
-      );
-      navigate("/patientDashboard");
-    } else if (email === "doctor@gmail.com" && password === "doctor@123") {
-      localStorage.setItem(
-        "userSession",
-        JSON.stringify({ role: "doctor", email, expiresAt: expiration })
-      );
-      navigate("/doctorDashboard");
-    } else {
-      setMessage("Invalid email or password");
+    try {
+      const res = await axios.post("http://localhost:5000/api/v1/users/login", {
+        email,
+        password,
+      });
+
+      if (res.status === 200) {
+        const { role } = res.data.user;
+        const id = res.data.user.id;
+        const expiration = new Date().getTime() + 2 * 60 * 60 * 1000;
+        localStorage.setItem(
+          "userSession",
+          JSON.stringify({ id,role, email, expiresAt: expiration })
+        );
+        if (role === "guest") {
+          navigate("/patientDashboard");
+        } else if (role === "doctor") {
+          navigate("/doctorDashboard");
+        }
+      }
+    } catch (err) {
+      if (err.response && err.response.data) {
+        setMessage(err.response.data.message || "Invalid email or password");
+      } else {
+        setMessage("An error occurred. Please try again.",err);
+      }
     }
   };
 

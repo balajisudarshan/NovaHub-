@@ -1,13 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./styles/PatientDashboard.css";
 
 const PatientDashboard = () => {
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const sessionData = JSON.parse(localStorage.getItem("userSession"));
+    const id = sessionData?.id;
+    console.log(id);
+    if (!sessionData || sessionData.role !== "guest") {
+      window.location.href = "/login";
+      return;
+    }
+
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/v1/users/${id}`
+        );
+        setUserData(response.data.user);
+        console.log(userData);
+        setLoading(false);
+      } catch (err) {
+        setError("Error fetching user details.");
+        setLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchUserData();
+    }
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div className="patientDashboardHolder">
       <div className="heading">
-        <h2>Welcome, Patient</h2>
+        <h2>
+          Welcome,
+          <span
+            style={{
+              color: "#1565C0",
+              fontWeight: "600",
+              backgroundColor: "#E3F2FD",
+              padding: "4px 10px",
+              borderRadius: "8px",
+            }}
+          >
+            {userData?.first_name} {userData?.last_name}
+          </span>
+        </h2>
       </div>
 
+      {/* Your Medicines Section */}
       <div className="medicineHolder">
         <h2>Your Medicines</h2>
         <div className="table-wrapper">
@@ -34,6 +89,7 @@ const PatientDashboard = () => {
         </div>
       </div>
 
+      {/* Appointment Booking Section */}
       <div className="appointmentBooking">
         <h2>Book an Appointment</h2>
         <div className="table-wrapper">
