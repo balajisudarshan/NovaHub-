@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import Home from "../components/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MedicinePage from "../components/medicinePage";
+import MedicinePage from "../components/MedicinePage.jsx";
 import Register from "../components/Register";
 import Login from "../components/Login";
 import PatientDashboard from "../components/Dashboard/PatientDashboard";
